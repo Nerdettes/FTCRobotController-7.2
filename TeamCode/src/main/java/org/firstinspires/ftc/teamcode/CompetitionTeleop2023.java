@@ -19,7 +19,7 @@ public class CompetitionTeleop2023 extends OpMode {
     private DcMotor RF = null;
     private DcMotor LB = null;
     private DcMotor RB = null;
-    boolean changed = false; //Outside of loop()
+    /*boolean changed = false; //Outside of loop()
     boolean changed2 = false;
     boolean changed3 = false;
     //public Servo turny = null;
@@ -27,11 +27,11 @@ public class CompetitionTeleop2023 extends OpMode {
     private CRServo intake = null;
     private DcMotor armboom = null;
     //private  DcMotor intakemotor = null;
-    private double PowerFactor = 0.8;
-    private Servo platform = null;
+    */private double PowerFactor = 1.0f;
+    //private Servo platform = null;
     //private Servo tester = null;
     double tgtPower = 0;
-    private static final float BUCKETCLEAR = .65f;
+    /*private static final float BUCKETCLEAR = .65f;
     private static final float BUCKETDUMP = 0f;
     private static final float BUCKETIN = 1f;
     boolean spinthatduck = false;
@@ -43,7 +43,7 @@ public class CompetitionTeleop2023 extends OpMode {
     private Servo dr_magnet = null;
     private static DistanceSensor MMA = null;
     /*
-     * Code to run ONCE when the driver hits INIT
+      Code to run ONCE when the driver hits INIT
      */
     @Override
     public void init() {
@@ -56,7 +56,7 @@ public class CompetitionTeleop2023 extends OpMode {
         RF = hardwareMap.get(DcMotor.class, "RF");
         LB = hardwareMap.get(DcMotor.class, "LB");
         RB = hardwareMap.get(DcMotor.class, "RB");
-        intake = hardwareMap.get(CRServo.class, "intake");
+        /*intake = hardwareMap.get(CRServo.class, "intake");
         spinspinducky = hardwareMap.get(CRServo.class, "spinspinducky");
         platform  = hardwareMap.get(Servo.class, "platform");
         armboom = hardwareMap.get(DcMotor.class, "armboom");
@@ -66,16 +66,16 @@ public class CompetitionTeleop2023 extends OpMode {
 
         // Most robots need the motor on one side to be reversed to drive forward
         // Reverse the motor that runs backwards when connected directly to the battery
-
+*/
         LF.setDirection(DcMotor.Direction.FORWARD);
         RF.setDirection(DcMotor.Direction.REVERSE);
         LB.setDirection(DcMotor.Direction.FORWARD);
         RB.setDirection(DcMotor.Direction.REVERSE);
-      armboom.setDirection(DcMotor.Direction.FORWARD);
+      /*armboom.setDirection(DcMotor.Direction.FORWARD);
         armboom.setZeroPowerBehavior(DcMotor.ZeroPowerBehavior.BRAKE);
         // Tell the driver that initialization is complete
         telemetry.addData("Status", "Initialized");
-
+*/
     }
 
     /*
@@ -85,8 +85,8 @@ public class CompetitionTeleop2023 extends OpMode {
     public void init_loop() {
       //  superPusher.setPosition(.6);
        //tester.setPosition(0.2);  // ring loader arm servo
-        platform.setPosition(0);
-        dr_magnet.setPosition(0);
+        //platform.setPosition(0);
+        //dr_magnet.setPosition(0);
     }
 
     /*
@@ -114,7 +114,7 @@ public class CompetitionTeleop2023 extends OpMode {
 
 
 //        Out
-        if (gamepad1.left_bumper&&!gamepad1.right_bumper) {
+      /*  if (gamepad1.left_bumper&&!gamepad1.right_bumper) {
            //intake.setDirection(DcMotorSimple.Direction.REVERSE);
             intake.setPower(-1);
 
@@ -225,7 +225,7 @@ public class CompetitionTeleop2023 extends OpMode {
                 isRumbling=false;
             }
         }
-
+*/
         double r = Math.hypot(gamepad1.left_stick_x, gamepad1.left_stick_y) * PowerFactor;
         double robotAngle = Math.atan2(gamepad1.left_stick_y, gamepad1.left_stick_x) - Math.PI / 4;
         double rightX = Math.pow(gamepad1.right_stick_x,5.0);
@@ -256,11 +256,11 @@ public class CompetitionTeleop2023 extends OpMode {
 
 
         //telemetry.addData("MotorPower", superShooter.getPower());
-        telemetry.addData("Pos",dr_magnet.getPosition());
+       /* telemetry.addData("Pos",dr_magnet.getPosition());
         telemetry.addData("Status", "Running");
         telemetry.addData("MMA", MMA.getDistance(DistanceUnit.CM));
         telemetry.update();
-/*
+
         if (gamepad2.x) {
             superShooter.setPower(1);
             telemetry.addData("MotorPower", superShooter.getPower());
